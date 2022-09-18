@@ -1,0 +1,80 @@
+
+{% extends "base.html" %}
+
+{% block title %} all page{% endblock  %}
+{%load crispy_forms_tags %}
+
+{% block content %}
+<section class="vh-100" style="background-color: ">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10 col-md-10 col-lg-10 col-xl-10">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+    
+<h3 class='test-center m-2 text-center'>List of Books</h3>
+{% if object %}
+<table class='table table-striped'>
+  <thead>
+      <th>name</th>
+      <th>description</th>
+      <th>author</th>
+      <th>category</th>
+      <th>delete</th>
+      <th>update</th>
+  </thead>
+{% for obj in object_list  %}
+ 
+     <tr>
+         <td>{{obj.name}}</td>
+         <td>{{obj.description}}</td>
+         <td>{{obj.author}}</td>
+         <td>{{obj.book_category}}</td>
+         <td > <a href="{% url 'delete' obj.id%}" class="text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg></a></td>
+         <td> <a href="{% url 'book_update' obj.id%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+          <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+          <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+        </svg></a></td>
+     </tr>
+     
+     {% endfor %}
+ </table>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary text-light" data-toggle="modal" data-target="#exampleModalCenter">
+  <a href="{% url 'create-book' %}" class='text-light'> Add Book</a>
+</button>
+<button type="button" class="btn btn-primary text-light" data-toggle="modal" data-target="#exampleModalCenter">
+  <a href="{% url 'register' %}" class='text-light'> Add Student</a>
+</button>
+{% else %}
+<table class='table table-striped'>
+  <thead>
+      <th>name</th>
+      <th>description</th>
+      <th>author</th>
+      <th>category</th>
+     
+  </thead>
+{% for obj in object_list  %}
+ 
+     <tr>
+         <td>{{obj.name}}</td>
+         <td>{{obj.description}}</td>
+         <td>{{obj.author}}</td>
+         <td>{{obj.book_category}}</td>
+         
+     </tr>
+     
+     {% endfor %}
+ </table>
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock  %}

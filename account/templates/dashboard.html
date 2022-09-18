@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} dashbord{% endblock  %}
+
+
+{% block content %}
+<div class="container text-center mt-4">
+    <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+      <div class="col">
+        <div class="p-3 border bg-light">
+          <a href="">Create an entry for Books.</a></div>
+      </div>
+      <div class="col">
+        <div class="p-3 border bg-light">
+          <a href="{% url 'allbook'%}">Retrieve all the books.</a></div>
+      </div>
+      <div class="col">
+        <div class="p-3 border bg-light">
+          <a href="{% url 'update_book' uid=uid%}">Update a book.</a></div>
+      </div>
+      <div class="col">
+        <div class="p-3 border bg-light">
+          <a href="#bottomOfPage">Delete a book.</a></div>
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock  %}
